@@ -16,6 +16,7 @@
 
 package io.geekidea.springbootplus.shiro.vo;
 
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
@@ -36,11 +37,13 @@ public class LoginSysUserRedisVo extends LoginSysUserVo {
     /**
      * 包装后的盐值
      */
+    @ApiModelProperty(value = "包装后的盐值")
     private String salt;
 
     /**
      * 登录ip
      */
+    @ApiModelProperty(value = "登录ip")
     private ClientInfo clientInfo;
 
 }

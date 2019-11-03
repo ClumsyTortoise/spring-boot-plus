@@ -16,6 +16,7 @@
 
 package io.geekidea.springbootplus.shiro.vo;
 
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -35,10 +36,12 @@ public class DeviceInfo implements Serializable {
     /**
      * 设备名称
      */
+    @ApiModelProperty(value = "设备名称")
     private String name;
 
     /**
      * 设备型号
      */
+    @ApiModelProperty(value = "设备型号")
     private String model;
 }

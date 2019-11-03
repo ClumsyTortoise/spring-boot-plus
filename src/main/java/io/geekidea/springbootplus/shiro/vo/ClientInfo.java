@@ -16,6 +16,7 @@
 
 package io.geekidea.springbootplus.shiro.vo;
 
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -36,56 +37,67 @@ public class ClientInfo implements Serializable {
     /**
      * ip
      */
+    @ApiModelProperty(value = "ip")
     private String ip;
 
     /**
      * ip对应的地址
      */
+    @ApiModelProperty(value = "ip对应的地址")
     private String addree;
 
     /**
      * 浏览器名称
      */
+    @ApiModelProperty(value = "浏览器名称")
     private String browserName;
 
     /**
      * 浏览器版本
      */
+    @ApiModelProperty(value = "浏览器版本")
     private String browserversion;
 
     /**
      * 浏览器引擎名称
      */
+    @ApiModelProperty(value = "浏览器引擎名称")
     private String engineName;
 
     /**
      * 浏览器引擎版本
      */
+    @ApiModelProperty(value = "浏览器引擎版本")
     private String engineVersion;
 
     /**
      * 系统名称
      */
+    @ApiModelProperty(value = "系统名称")
     private String osName;
 
     /**
      * 平台名称
      */
+    @ApiModelProperty(value = "平台名称")
     private String platformName;
 
     /**
      * 是否是手机
      */
+    @ApiModelProperty(value = "是否是手机")
     private boolean mobile;
 
     /**
      * 移动端设备型号
      */
+    @ApiModelProperty(value = "移动端设备型号")
     private String deviceName;
 
     /**
      * 移动端设备型号
      */
+    @ApiModelProperty(value = "移动端设备型号")
     private String deviceModel;
 
 }
