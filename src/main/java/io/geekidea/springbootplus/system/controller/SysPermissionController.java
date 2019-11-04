@@ -18,7 +18,7 @@ package io.geekidea.springbootplus.system.controller;
 
 import io.geekidea.springbootplus.common.api.ApiResult;
 import io.geekidea.springbootplus.common.controller.BaseController;
-import io.geekidea.springbootplus.common.vo.Paging;
+import io.geekidea.springbootplus.common.vo.PageInfo;
 import io.geekidea.springbootplus.system.entity.SysPermission;
 import io.geekidea.springbootplus.system.param.SysPermissionQueryParam;
 import io.geekidea.springbootplus.system.service.SysPermissionService;
@@ -101,29 +101,31 @@ public class SysPermissionController extends BaseController {
     @PostMapping("/getPageList")
     @RequiresPermissions("sys:permission:page")
     @ApiOperation(value = "获取SysPermission分页列表", notes = "系统权限分页列表", response = SysPermissionQueryVo.class)
-    public ApiResult<Paging<SysPermissionQueryVo>> getSysPermissionPageList(@Valid @RequestBody SysPermissionQueryParam sysPermissionQueryParam) throws Exception {
-        Paging<SysPermissionQueryVo> paging = sysPermissionService.getSysPermissionPageList(sysPermissionQueryParam);
-        return ApiResult.ok(paging);
+    public ApiResult<PageInfo<SysPermissionQueryVo>> getSysPermissionPageList(@Valid @RequestBody SysPermissionQueryParam sysPermissionQueryParam) throws Exception {
+        PageInfo<SysPermissionQueryVo> pageInfo = sysPermissionService.getSysPermissionPageList(sysPermissionQueryParam);
+        return ApiResult.ok(pageInfo);
     }
 
     /**
      * 获取所有菜单列表
+     * @return
      */
     @PostMapping("/getAllMenuList")
     @RequiresPermissions("sys:permission:all:menu:list")
     @ApiOperation(value = "获取所有菜单列表", notes = "获取所有菜单列表", response = SysPermission.class)
-    public ApiResult<SysPermission> getAllMenuList() throws Exception {
+    public ApiResult<List<SysPermission>> getAllMenuList() throws Exception {
         List<SysPermission> list = sysPermissionService.getAllMenuList();
         return ApiResult.ok(list);
     }
 
     /**
      * 获取获取菜单树形列表
+     * @return
      */
     @PostMapping("/getAllMenuTree")
     @RequiresPermissions("sys:permission:all:menu:tree")
     @ApiOperation(value = "获取所有菜单列表", notes = "获取所有菜单列表", response = SysPermissionTreeVo.class)
-    public ApiResult<SysPermissionTreeVo> getAllMenuTree() throws Exception {
+    public ApiResult<List<SysPermissionTreeVo>> getAllMenuTree() throws Exception {
         List<SysPermissionTreeVo> treeVos = sysPermissionService.getAllMenuTree();
         return ApiResult.ok(treeVos);
     }
@@ -131,33 +133,36 @@ public class SysPermissionController extends BaseController {
 
     /**
      * 根据用户id获取菜单列表
+     * @return
      */
     @PostMapping("/getMenuListByUserId/{userId}")
     @RequiresPermissions("sys:permission:menu:list")
     @ApiOperation(value = "根据用户id获取菜单列表", notes = "根据用户id获取菜单列表", response = SysPermission.class)
-    public ApiResult<SysPermission> getMenuListByUserId(@PathVariable("userId") Long userId) throws Exception {
+    public ApiResult<List<SysPermission>> getMenuListByUserId(@PathVariable("userId") Long userId) throws Exception {
         List<SysPermission> list = sysPermissionService.getMenuListByUserId(userId);
         return ApiResult.ok(list);
     }
 
     /**
      * 根据用户id获取菜单树形列表
+     * @return
      */
     @PostMapping("/getMenuTreeByUserId/{userId}")
     @RequiresPermissions("sys:permission:menu:tree")
     @ApiOperation(value = "根据用户id获取菜单树形列表", notes = "根据用户id获取菜单树形列表", response = SysPermissionTreeVo.class)
-    public ApiResult<SysPermissionTreeVo> getMenuTreeByUserId(@PathVariable("userId") Long userId) throws Exception {
+    public ApiResult<List<SysPermissionTreeVo>> getMenuTreeByUserId(@PathVariable("userId") Long userId) throws Exception {
         List<SysPermissionTreeVo> treeVos = sysPermissionService.getMenuTreeByUserId(userId);
         return ApiResult.ok(treeVos);
     }
 
     /**
      * 根据用户id获取该用户所有权限编码
+     * @return
      */
     @GetMapping("/getPermissionCodesByUserId/{userId}")
     @RequiresPermissions("sys:permission:codes")
     @ApiOperation(value = "根据用户id获取该用户所有权限编码", notes = "根据用户id获取该用户所有权限编码", response = ApiResult.class)
-    public ApiResult<String> getPermissionCodesByUserId(@PathVariable("userId") Long userId) throws Exception {
+    public ApiResult<List<String>> getPermissionCodesByUserId(@PathVariable("userId") Long userId) throws Exception {
         List<String> list = sysPermissionService.getPermissionCodesByUserId(userId);
         return ApiResult.ok(list);
     }

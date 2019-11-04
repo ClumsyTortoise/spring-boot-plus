@@ -48,18 +48,18 @@ public abstract class BaseServiceImpl<M extends BaseMapper<T>, T> extends Servic
          * 如果是queryParam是OrderQueryParam，并且不为空，则使用前端排序
          * 否则使用默认排序
          */
-        if (queryParam instanceof OrderQueryParam){
-            OrderQueryParam orderQueryParam = (OrderQueryParam) queryParam;
-            List<OrderItem> orderItems = orderQueryParam.getOrders();
-            if (CollectionUtils.isEmpty(orderItems)){
-                page.setOrders(Arrays.asList(defaultOrder));
-            }else{
-                page.setOrders(orderItems);
-            }
-        }else{
-            page.setOrders(Arrays.asList(defaultOrder));
-        }
-
+//        if (queryParam instanceof OrderQueryParam){
+//            OrderQueryParam orderQueryParam = (OrderQueryParam) queryParam;
+//            List<OrderItem> orderItems = orderQueryParam.getOrders();
+//            if (CollectionUtils.isEmpty(orderItems)){
+//                page.setOrders(Arrays.asList(defaultOrder));
+//            }else{
+//                page.setOrders(orderItems);
+//            }
+//        }else{
+//            page.setOrders(Arrays.asList(defaultOrder));
+//        }
+        page.setOrders(Arrays.asList(defaultOrder));
         return page;
     }
 

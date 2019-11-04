@@ -17,7 +17,7 @@
 package io.geekidea.springbootplus.system.service;
 
 import io.geekidea.springbootplus.common.service.BaseService;
-import io.geekidea.springbootplus.common.vo.Paging;
+import io.geekidea.springbootplus.common.vo.PageInfo;
 import io.geekidea.springbootplus.system.entity.SysUser;
 import io.geekidea.springbootplus.system.param.SysUserQueryParam;
 import io.geekidea.springbootplus.system.param.UpdatePasswordParam;
@@ -78,7 +78,7 @@ public interface SysUserService extends BaseService<SysUser> {
      * @return
      * @throws Exception
      */
-    Paging<SysUserQueryVo> getSysUserPageList(SysUserQueryParam sysUserQueryParam) throws Exception;
+    PageInfo<SysUserQueryVo> getSysUserPageList(SysUserQueryParam sysUserQueryParam) throws Exception;
 
     /**
      * 判断用户名是否存在

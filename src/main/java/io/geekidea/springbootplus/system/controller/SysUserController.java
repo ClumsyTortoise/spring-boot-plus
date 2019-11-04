@@ -18,8 +18,10 @@ package io.geekidea.springbootplus.system.controller;
 
 import io.geekidea.springbootplus.common.api.ApiResult;
 import io.geekidea.springbootplus.common.controller.BaseController;
-import io.geekidea.springbootplus.common.vo.Paging;
+import io.geekidea.springbootplus.common.vo.PageInfo;
 import io.geekidea.springbootplus.core.properties.SpringBootPlusProperties;
+import io.geekidea.springbootplus.shiro.util.LoginUtil;
+import io.geekidea.springbootplus.shiro.vo.LoginSysUserRedisVo;
 import io.geekidea.springbootplus.system.entity.SysUser;
 import io.geekidea.springbootplus.system.param.SysUserQueryParam;
 import io.geekidea.springbootplus.system.param.UpdatePasswordParam;
@@ -35,6 +37,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
+import java.util.Objects;
 
 /**
  * <pre>
@@ -47,7 +50,7 @@ import javax.validation.Valid;
 @Slf4j
 @RestController
 @RequestMapping("/sysUser")
-@Api("系统用户 API")
+@Api(tags = "系统用户 API")
 public class SysUserController extends BaseController {
 
     @Autowired
@@ -61,7 +64,7 @@ public class SysUserController extends BaseController {
      */
     @PostMapping("/add")
     @RequiresPermissions("sys:user:add")
-    @ApiOperation(value = "添加SysUser对象", notes = "添加系统用户", response = ApiResult.class)
+    @ApiOperation(value = "添加SysUser对象", notes = "添加系统用户")
     public ApiResult<Boolean> addSysUser(@Valid @RequestBody SysUser sysUser) throws Exception {
         boolean flag = sysUserService.saveSysUser(sysUser);
         return ApiResult.result(flag);
@@ -72,7 +75,7 @@ public class SysUserController extends BaseController {
      */
     @PostMapping("/update")
     @RequiresPermissions("sys:user:update")
-    @ApiOperation(value = "修改SysUser对象", notes = "修改系统用户", response = ApiResult.class)
+    @ApiOperation(value = "修改SysUser对象", notes = "修改系统用户")
     public ApiResult<Boolean> updateSysUser(@Valid @RequestBody SysUser sysUser) throws Exception {
         boolean flag = sysUserService.updateSysUser(sysUser);
         return ApiResult.result(flag);
@@ -83,7 +86,7 @@ public class SysUserController extends BaseController {
      */
     @PostMapping("/delete/{id}")
     @RequiresPermissions("sys:user:delete")
-    @ApiOperation(value = "删除SysUser对象", notes = "删除系统用户", response = ApiResult.class)
+    @ApiOperation(value = "删除SysUser对象", notes = "删除系统用户")
     public ApiResult<Boolean> deleteSysUser(@PathVariable("id") Long id) throws Exception {
         boolean flag = sysUserService.deleteSysUser(id);
         return ApiResult.result(flag);
@@ -104,19 +107,20 @@ public class SysUserController extends BaseController {
      * 系统用户分页列表
      */
     @PostMapping("/getPageList")
-    @RequiresPermissions("sys:user:page")
-    @ApiOperation(value = "获取SysUser分页列表", notes = "系统用户分页列表", response = SysUserQueryVo.class)
-    public ApiResult<Paging<SysUserQueryVo>> getSysUserPageList(@Valid @RequestBody SysUserQueryParam sysUserQueryParam) throws Exception {
-        Paging<SysUserQueryVo> paging = sysUserService.getSysUserPageList(sysUserQueryParam);
-        return ApiResult.ok(paging);
+    //@RequiresPermissions("sys:user:page")
+    @ApiOperation(value = "获取SysUser分页列表", notes = "系统用户分页列表")
+    public ApiResult<PageInfo<SysUserQueryVo>> getSysUserPageList(@Valid @RequestBody SysUserQueryParam sysUserQueryParam) throws Exception {
+        PageInfo<SysUserQueryVo> pageInfo = sysUserService.getSysUserPageList(sysUserQueryParam);
+        return ApiResult.ok(pageInfo);
     }
+
 
     /**
      * 修改密码
      */
     @PostMapping("/updatePassword")
     @RequiresPermissions("sys:user:update:password")
-    @ApiOperation(value = "修改密码", notes = "修改密码", response = ApiResult.class)
+    @ApiOperation(value = "修改密码", notes = "修改密码")
     public ApiResult<Boolean> updatePassword(@Valid @RequestBody UpdatePasswordParam updatePasswordParam) throws Exception {
         boolean flag = sysUserService.updatePassword(updatePasswordParam);
         return ApiResult.result(flag);
@@ -124,12 +128,13 @@ public class SysUserController extends BaseController {
 
     /**
      * 修改头像
+     * @return
      */
     @PostMapping("/uploadHead/{id}")
     @RequiresPermissions("sys:user:update:head")
-    @ApiOperation(value = "修改头像",notes = "修改头像",response = ApiResult.class)
-    public ApiResult<Boolean> uploadHead(@PathVariable("id") Long id,
-                                         @RequestParam("head") MultipartFile multipartFile) throws Exception{
+    @ApiOperation(value = "修改头像",notes = "修改头像")
+    public ApiResult<String> uploadHead(@PathVariable("id") Long id,
+                                        @RequestParam("head") MultipartFile multipartFile) throws Exception{
         log.info("multipartFile = " + multipartFile);
         log.info("ContentType = " + multipartFile.getContentType());
         log.info("OriginalFilename = " + multipartFile.getOriginalFilename());
@@ -151,6 +156,16 @@ public class SysUserController extends BaseController {
         // 删除图片文件
         UploadUtil.deleteQuietly(uploadPath,saveFileName);
         return ApiResult.fail();
+    }
+
+    /**
+     * 根据token获取当前登录用户
+     */
+    @GetMapping("/getCurrentSysUser")
+    @ApiOperation(value = "根据token获取当前登录用户", notes = "根据token获取当前登录用户")
+    public ApiResult<LoginSysUserRedisVo> getCurrentSysUser(){
+        log.info(Objects.requireNonNull(LoginUtil.getLoginSysUserRedisVo()).toString());
+        return ApiResult.ok(LoginUtil.getLoginSysUserRedisVo());
     }
 }
 

@@ -49,7 +49,8 @@
         <spring-boot.version>2.2.0.RELEASE</spring-boot.version>
         <spring-boot-admin.version>2.2.0-SNAPSHOT</spring-boot-admin.version>
         <mybatis-plus-boot-starter.version>3.2.0</mybatis-plus-boot-starter.version>
-        <swagger2.version>2.6.1</swagger2.version>
+        <swagger2.version>2.8.0</swagger2.version>
+        <swagger-bootstrap-ui>1.7.2</swagger-bootstrap-ui>
         <commons-lang3.version>3.9</commons-lang3.version>
         <commons-collections4.version>4.4</commons-collections4.version>
         <commons-io.version>2.6</commons-io.version>
@@ -181,6 +182,11 @@
             <artifactId>springfox-swagger-ui</artifactId>
             <version>${swagger2.version}</version>
         </dependency>
+        <!--<dependency>
+            <groupId>com.github.xiaoymin</groupId>
+            <artifactId>swagger-bootstrap-ui</artifactId>
+            <version>${swagger-bootstrap-ui}</version>
+        </dependency>-->
         <!-- swagger end -->
 
         <!-- apache commons start -->

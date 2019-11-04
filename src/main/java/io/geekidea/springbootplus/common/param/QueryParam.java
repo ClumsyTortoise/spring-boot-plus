@@ -38,8 +38,8 @@ public abstract class QueryParam implements Serializable {
     private Integer current = CommonConstant.DEFAULT_PAGE_INDEX;
     @ApiModelProperty(value = "页大小,默认为10", example = "10")
     private Integer size = CommonConstant.DEFAULT_PAGE_SIZE;
-    @ApiModelProperty(value = "搜索字符串", example = "")
-    private String keyword;
+//    @ApiModelProperty(value = "搜索字符串", example = "")
+//    private String keyword;
 
     public void setCurrent(Integer current) {
         if (current == null || current <= 0) {

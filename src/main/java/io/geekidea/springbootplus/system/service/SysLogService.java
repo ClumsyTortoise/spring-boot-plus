@@ -16,11 +16,11 @@
 
 package io.geekidea.springbootplus.system.service;
 
+import io.geekidea.springbootplus.common.vo.PageInfo;
 import io.geekidea.springbootplus.system.entity.SysLog;
 import io.geekidea.springbootplus.common.service.BaseService;
 import io.geekidea.springbootplus.system.param.SysLogQueryParam;
 import io.geekidea.springbootplus.system.vo.SysLogQueryVo;
-import io.geekidea.springbootplus.common.vo.Paging;
 
 import java.io.Serializable;
 
@@ -48,6 +48,6 @@ public interface SysLogService extends BaseService<SysLog> {
      * @param sysLogQueryParam
      * @return
      */
-    Paging<SysLogQueryVo> getSysLogPageList(SysLogQueryParam sysLogQueryParam) throws Exception;
+    PageInfo<SysLogQueryVo> getSysLogPageList(SysLogQueryParam sysLogQueryParam) throws Exception;
 
 }

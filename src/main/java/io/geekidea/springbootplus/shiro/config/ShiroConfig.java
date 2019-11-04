@@ -227,9 +227,10 @@ public class ShiroConfig {
 
         log.debug("filterChainMap:{}", JSON.toJSONString(filterChainDefinitionMap));
 
-        // 添加默认的filter
-        Map<String, String> newFilterChainDefinitionMap = addDefaultFilterDefinition(filterChainDefinitionMap);
-        return newFilterChainDefinitionMap;
+        //TODO zjq  去掉添加的自定义的默认过滤器 RequestPathFilter 我感觉没用
+        // 原本的添加默认的filter
+        //Map<String, String> newFilterChainDefinitionMap = addDefaultFilterDefinition(filterChainDefinitionMap);
+        return filterChainDefinitionMap;
     }
 
     /**

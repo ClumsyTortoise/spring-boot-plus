@@ -6,7 +6,7 @@ import ${package.Service}.${table.serviceName};
 import ${cfg.queryParamPath};
 import ${cfg.queryVoPath};
 import ${superServiceImplClassPackage};
-import ${cfg.paging};
+import ${cfg.pageInfo};
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -66,10 +66,10 @@ public class ${table.serviceImplName} extends BaseServiceImpl<${table.mapperName
     }
 
     @Override
-    public Paging<${entity}QueryVo> get${entity}PageList(${entity}QueryParam ${cfg.entityObjectName}QueryParam) throws Exception {
+    public PageInfo<${entity}QueryVo> get${entity}PageList(${entity}QueryParam ${cfg.entityObjectName}QueryParam) throws Exception {
         Page page = setPageParam(${cfg.entityObjectName}QueryParam, OrderItem.desc("create_time"));
         IPage<${entity}QueryVo> iPage = ${cfg.mapperObjectName}.get${entity}PageList(page, ${cfg.entityObjectName}QueryParam);
-        return new Paging(iPage);
+        return PageInfo.build(iPage);
     }
 #end
 

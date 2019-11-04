@@ -61,6 +61,7 @@ public class RequestPathFilter implements Filter {
         HttpServletRequest req = (HttpServletRequest) request;
         String path = req.getServletPath();
         String url = req.getRequestURL().toString();
+        log.info("RequestPathFilter -----------> " + url);
         PathMatcher pathMatcher = new AntPathMatcher();
         boolean isOut = true;
         if (ArrayUtils.isNotEmpty(excludePaths)) {

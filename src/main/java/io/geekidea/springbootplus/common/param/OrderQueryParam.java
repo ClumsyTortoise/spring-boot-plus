@@ -33,23 +33,23 @@ import java.util.List;
  * @since 2019-08-04
  */
 @Data
-@EqualsAndHashCode(callSuper = true)
+@EqualsAndHashCode(callSuper = true,exclude = "")
 @ApiModel("可排序查询参数对象")
 public abstract class OrderQueryParam extends QueryParam {
     private static final long serialVersionUID = 57714391204790143L;
 
-    @ApiModelProperty(value = "排序")
-    private List<OrderItem> orders;
-
-    public void defaultOrder(OrderItem orderItem) {
-        this.defaultOrders(Arrays.asList(orderItem));
-    }
-
-    public void defaultOrders(List<OrderItem> orderItems) {
-        if (CollectionUtils.isEmpty(orderItems)) {
-            return;
-        }
-        this.orders = orderItems;
-    }
+//    @ApiModelProperty(value = "排序")
+//    private List<OrderItem> orders;
+//
+//    public void defaultOrder(OrderItem orderItem) {
+//        this.defaultOrders(Arrays.asList(orderItem));
+//    }
+//
+//    public void defaultOrders(List<OrderItem> orderItems) {
+//        if (CollectionUtils.isEmpty(orderItems)) {
+//            return;
+//        }
+//        this.orders = orderItems;
+//    }
 
 }

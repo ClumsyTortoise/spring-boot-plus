@@ -1,12 +1,12 @@
 package io.geekidea.springbootplus.foobar.service.impl;
 
+import io.geekidea.springbootplus.common.vo.PageInfo;
 import io.geekidea.springbootplus.foobar.entity.FooBar;
 import io.geekidea.springbootplus.foobar.mapper.FooBarMapper;
 import io.geekidea.springbootplus.foobar.service.FooBarService;
 import io.geekidea.springbootplus.foobar.param.FooBarQueryParam;
 import io.geekidea.springbootplus.foobar.vo.FooBarQueryVo;
 import io.geekidea.springbootplus.common.service.impl.BaseServiceImpl;
-import io.geekidea.springbootplus.common.vo.Paging;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -58,10 +58,10 @@ public class FooBarServiceImpl extends BaseServiceImpl<FooBarMapper, FooBar> imp
     }
 
     @Override
-    public Paging<FooBarQueryVo> getFooBarPageList(FooBarQueryParam fooBarQueryParam) throws Exception {
+    public PageInfo<FooBarQueryVo> getFooBarPageList(FooBarQueryParam fooBarQueryParam) throws Exception {
         Page page = setPageParam(fooBarQueryParam, OrderItem.desc("create_time"));
         IPage<FooBarQueryVo> iPage = fooBarMapper.getFooBarPageList(page, fooBarQueryParam);
-        return new Paging(iPage);
+        return PageInfo.build(iPage);
     }
 
 }

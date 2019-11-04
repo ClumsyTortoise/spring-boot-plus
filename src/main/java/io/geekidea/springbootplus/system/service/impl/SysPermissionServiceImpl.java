@@ -22,7 +22,7 @@ import com.baomidou.mybatisplus.core.metadata.OrderItem;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import io.geekidea.springbootplus.common.exception.BusinessException;
 import io.geekidea.springbootplus.common.service.impl.BaseServiceImpl;
-import io.geekidea.springbootplus.common.vo.Paging;
+import io.geekidea.springbootplus.common.vo.PageInfo;
 import io.geekidea.springbootplus.enums.LevelEnum;
 import io.geekidea.springbootplus.enums.StateEnum;
 import io.geekidea.springbootplus.system.convert.SysPermissionConvert;
@@ -112,10 +112,10 @@ public class SysPermissionServiceImpl extends BaseServiceImpl<SysPermissionMappe
     }
 
     @Override
-    public Paging<SysPermissionQueryVo> getSysPermissionPageList(SysPermissionQueryParam sysPermissionQueryParam) throws Exception {
+    public PageInfo<SysPermissionQueryVo> getSysPermissionPageList(SysPermissionQueryParam sysPermissionQueryParam) throws Exception {
         Page page = setPageParam(sysPermissionQueryParam, OrderItem.desc("create_time"));
         IPage<SysPermissionQueryVo> iPage = sysPermissionMapper.getSysPermissionPageList(page, sysPermissionQueryParam);
-        return new Paging(iPage);
+        return PageInfo.build(iPage);
     }
 
     @Override

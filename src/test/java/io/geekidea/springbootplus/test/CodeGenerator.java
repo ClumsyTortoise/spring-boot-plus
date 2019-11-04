@@ -205,7 +205,7 @@ public class CodeGenerator {
     /**
      * 公共分页对象
      */
-    private String commonPaging;
+    private String commonPageInfo;
 
     /**
      * 是否文件覆盖
@@ -230,7 +230,7 @@ public class CodeGenerator {
         this.commonApiResult = this.commonParentPackage + ".api.ApiResult";
         this.commonOrderEnum = this.commonParentPackage + ".enums.OrderEnum";
         this.commonOrderQueryParam = this.commonParentPackage + ".param.OrderQueryParam";
-        this.commonPaging = this.commonParentPackage + ".vo.Paging";
+        this.commonPageInfo = this.commonParentPackage + ".vo.PageInfo";
     }
 
     /**
@@ -310,7 +310,7 @@ public class CodeGenerator {
                 // 主键ID驼峰名称
                 map.put("pkIdCamelName", underlineToCamel(pkIdColumnName));
                 // 导入分页类
-                map.put("paging", commonPaging);
+                map.put("pageInfo", commonPageInfo);
                 // 导入排序枚举
                 map.put("orderEnum", commonOrderEnum);
                 // ApiResult

@@ -21,7 +21,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.metadata.OrderItem;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import io.geekidea.springbootplus.common.service.impl.BaseServiceImpl;
-import io.geekidea.springbootplus.common.vo.Paging;
+import io.geekidea.springbootplus.common.vo.PageInfo;
 import io.geekidea.springbootplus.enums.StateEnum;
 import io.geekidea.springbootplus.system.convert.SysDepartmentConvert;
 import io.geekidea.springbootplus.system.entity.SysDepartment;
@@ -81,10 +81,10 @@ public class SysDepartmentServiceImpl extends BaseServiceImpl<SysDepartmentMappe
     }
 
     @Override
-    public Paging<SysDepartmentQueryVo> getSysDepartmentPageList(SysDepartmentQueryParam sysDepartmentQueryParam) throws Exception {
+    public PageInfo<SysDepartmentQueryVo> getSysDepartmentPageList(SysDepartmentQueryParam sysDepartmentQueryParam) throws Exception {
         Page page = setPageParam(sysDepartmentQueryParam, OrderItem.desc("create_time"));
         IPage<SysDepartmentQueryVo> iPage = sysDepartmentMapper.getSysDepartmentPageList(page, sysDepartmentQueryParam);
-        return new Paging(iPage);
+        return PageInfo.build(iPage);
     }
 
     @Override

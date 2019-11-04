@@ -5,7 +5,7 @@ spring-boot-plus:
 server:
   port: 8888
   servlet:
-    context-path: /
+    context-path: /spring-boot-plus
 spring:
   datasource:
     url: jdbc:mysql://localhost:3306/spring_boot_plus?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true
@@ -15,7 +15,7 @@ spring:
   # Redis配置
   redis:
     database: 0
-    host: localhost
+    host: 192.168.83.128
     password:
     port: 6379
 

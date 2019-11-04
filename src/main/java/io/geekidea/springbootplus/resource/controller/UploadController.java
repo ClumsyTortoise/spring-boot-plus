@@ -64,10 +64,11 @@ public class UploadController {
 
     /**
      * 上传单个文件
+     * @return
      */
-    @PostMapping("/")
+    @PostMapping("/single")
     @ApiOperation(value = "上传单个文件",notes = "上传单个文件",response = ApiResult.class)
-    public ApiResult<Boolean> upload(@RequestParam("img") MultipartFile multipartFile) throws Exception{
+    public ApiResult<String> upload(@RequestParam("img") MultipartFile multipartFile) throws Exception{
         log.info("multipartFile = " + multipartFile);
         log.info("ContentType = " + multipartFile.getContentType());
         log.info("OriginalFilename = " + multipartFile.getOriginalFilename());

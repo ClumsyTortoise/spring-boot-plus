@@ -4,7 +4,7 @@
 server:
   port: 8888
   servlet:
-    context-path: /
+    context-path: /spring-boot-plus
   tomcat:
     max-threads: 1000
     min-spare-threads: 30
@@ -113,7 +113,7 @@ spring-boot-plus:
     # 允许访问的源
     allowed-origins: '*'
     # 允许访问的请求头
-    allowed-headers: x-requested-with,content-type,token
+    allowed-headers: access-control-allow-origin,content-type,X-Requested-With,accept,Origin,Access-Control-Request-Method,Access-Control-Request-Headers,token
     # 是否允许发送cookie
     allow-credentials: true
     # 允许访问的请求方式
@@ -161,7 +161,7 @@ spring-boot-plus:
       - urls: /docs,/swagger-ui.html,/webjars/springfox-swagger-ui/**,/swagger-resources/**,/v2/api-docs
         permission: anon
         # 排除SpringBootAdmin
-      - urls: /,/favicon.ico,/actuator/**,/instances/**,/assets/**,/sba-settings.js,/applications/**
+      - urls: /,/favicon.ico,/journal,/about,/actuator/**,/instances/**,/assets/**,/sba-settings.js,/applications/**,/upload/**,/api/resource/image/**,/download/**,/myTest/**
         permission: anon
         # 测试
       - url: /sysUser/getPageList
@@ -189,7 +189,7 @@ spring-boot-plus:
     # true: 同一个账号只能是最后一次登陆token有效，false：同一个账号可多次登陆
     single-login: false
     # 盐值校验，如果不加自定义盐值，则使用secret校验
-    salt-check: true
+    salt-check: false
   ############################ JWT end ###############################
 
 ############################### spring-boot-plus end ###############################

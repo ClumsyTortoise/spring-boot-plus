@@ -95,6 +95,7 @@
     <!-- 解决SpringBootAdmin错误日志问题 -->
     <logger name="org.apache.catalina.connector.CoyoteAdapter" level="OFF"/>
 
+    <!-- 日志输出级别  ，注意：如果不写<appender-ref ref="CONSOLE" /> ，将导致springbootadmin找不到文件，无法查看日志 -->
     <root level="INFO">
         <appender-ref ref="CONSOLE" />
         <appender-ref ref="ASYNC_FILE" />

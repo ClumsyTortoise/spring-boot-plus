@@ -17,7 +17,7 @@
 package io.geekidea.springbootplus.system.service;
 
 import io.geekidea.springbootplus.common.service.BaseService;
-import io.geekidea.springbootplus.common.vo.Paging;
+import io.geekidea.springbootplus.common.vo.PageInfo;
 import io.geekidea.springbootplus.system.entity.SysDepartment;
 import io.geekidea.springbootplus.system.param.SysDepartmentQueryParam;
 import io.geekidea.springbootplus.system.vo.SysDepartmentQueryVo;
@@ -79,7 +79,7 @@ public interface SysDepartmentService extends BaseService<SysDepartment> {
      * @return
      * @throws Exception
      */
-    Paging<SysDepartmentQueryVo> getSysDepartmentPageList(SysDepartmentQueryParam sysDepartmentQueryParam) throws Exception;
+    PageInfo<SysDepartmentQueryVo> getSysDepartmentPageList(SysDepartmentQueryParam sysDepartmentQueryParam) throws Exception;
 
     /**
      * 根据id校验部门是否存在并且已启用

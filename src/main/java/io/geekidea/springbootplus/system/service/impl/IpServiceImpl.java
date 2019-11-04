@@ -16,16 +16,15 @@
 
 package io.geekidea.springbootplus.system.service.impl;
 
+import io.geekidea.springbootplus.common.vo.PageInfo;
 import io.geekidea.springbootplus.system.entity.Ip;
 import io.geekidea.springbootplus.system.mapper.IpMapper;
 import io.geekidea.springbootplus.system.service.IpService;
 import io.geekidea.springbootplus.system.param.IpQueryParam;
 import io.geekidea.springbootplus.system.vo.IpQueryVo;
 import io.geekidea.springbootplus.common.service.impl.BaseServiceImpl;
-import io.geekidea.springbootplus.common.vo.Paging;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -55,10 +54,10 @@ public class IpServiceImpl extends BaseServiceImpl<IpMapper, Ip> implements IpSe
     }
 
     @Override
-    public Paging<IpQueryVo> getIpPageList(IpQueryParam ipQueryParam) throws Exception {
+    public PageInfo<IpQueryVo> getIpPageList(IpQueryParam ipQueryParam) throws Exception {
         Page page = setPageParam(ipQueryParam, OrderItem.desc("create_time"));
         IPage<IpQueryVo> iPage = ipMapper.getIpPageList(page, ipQueryParam);
-        return new Paging(iPage);
+        return PageInfo.build(iPage);
     }
 
 }

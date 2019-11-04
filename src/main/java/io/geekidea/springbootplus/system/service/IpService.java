@@ -20,7 +20,7 @@ import io.geekidea.springbootplus.system.entity.Ip;
 import io.geekidea.springbootplus.common.service.BaseService;
 import io.geekidea.springbootplus.system.param.IpQueryParam;
 import io.geekidea.springbootplus.system.vo.IpQueryVo;
-import io.geekidea.springbootplus.common.vo.Paging;
+import io.geekidea.springbootplus.common.vo.PageInfo;
 
 import java.io.Serializable;
 
@@ -48,6 +48,6 @@ public interface IpService extends BaseService<Ip> {
      * @param ipQueryParam
      * @return
      */
-    Paging<IpQueryVo> getIpPageList(IpQueryParam ipQueryParam) throws Exception;
+    PageInfo<IpQueryVo> getIpPageList(IpQueryParam ipQueryParam) throws Exception;
 
 }

@@ -24,7 +24,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import io.geekidea.springbootplus.common.exception.BusinessException;
 import io.geekidea.springbootplus.common.exception.DaoException;
 import io.geekidea.springbootplus.common.service.impl.BaseServiceImpl;
-import io.geekidea.springbootplus.common.vo.Paging;
+import io.geekidea.springbootplus.common.vo.PageInfo;
 import io.geekidea.springbootplus.enums.StateEnum;
 import io.geekidea.springbootplus.system.convert.SysRoleConvert;
 import io.geekidea.springbootplus.system.entity.SysRole;
@@ -187,10 +187,10 @@ public class SysRoleServiceImpl extends BaseServiceImpl<SysRoleMapper, SysRole> 
     }
 
     @Override
-    public Paging<SysRoleQueryVo> getSysRolePageList(SysRoleQueryParam sysRoleQueryParam) throws Exception {
+    public PageInfo<SysRoleQueryVo> getSysRolePageList(SysRoleQueryParam sysRoleQueryParam) throws Exception {
         Page page = setPageParam(sysRoleQueryParam, OrderItem.desc("create_time"));
         IPage<SysRoleQueryVo> iPage = sysRoleMapper.getSysRolePageList(page, sysRoleQueryParam);
-        return new Paging(iPage);
+        return PageInfo.build(iPage);
     }
 
     @Override

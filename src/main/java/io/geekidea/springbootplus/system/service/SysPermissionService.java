@@ -20,7 +20,7 @@ import io.geekidea.springbootplus.system.entity.SysPermission;
 import io.geekidea.springbootplus.common.service.BaseService;
 import io.geekidea.springbootplus.system.param.SysPermissionQueryParam;
 import io.geekidea.springbootplus.system.vo.SysPermissionQueryVo;
-import io.geekidea.springbootplus.common.vo.Paging;
+import io.geekidea.springbootplus.common.vo.PageInfo;
 import io.geekidea.springbootplus.system.vo.SysPermissionTreeVo;
 
 import java.io.Serializable;
@@ -79,7 +79,7 @@ public interface SysPermissionService extends BaseService<SysPermission> {
      * @return
      * @throws Exception
      */
-    Paging<SysPermissionQueryVo> getSysPermissionPageList(SysPermissionQueryParam sysPermissionQueryParam) throws Exception;
+    PageInfo<SysPermissionQueryVo> getSysPermissionPageList(SysPermissionQueryParam sysPermissionQueryParam) throws Exception;
 
     /**
      * 判断权限id是否存在

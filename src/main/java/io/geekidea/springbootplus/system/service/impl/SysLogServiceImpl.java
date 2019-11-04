@@ -16,16 +16,15 @@
 
 package io.geekidea.springbootplus.system.service.impl;
 
+import io.geekidea.springbootplus.common.vo.PageInfo;
 import io.geekidea.springbootplus.system.entity.SysLog;
 import io.geekidea.springbootplus.system.mapper.SysLogMapper;
 import io.geekidea.springbootplus.system.service.SysLogService;
 import io.geekidea.springbootplus.system.param.SysLogQueryParam;
 import io.geekidea.springbootplus.system.vo.SysLogQueryVo;
 import io.geekidea.springbootplus.common.service.impl.BaseServiceImpl;
-import io.geekidea.springbootplus.common.vo.Paging;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -55,10 +54,10 @@ public class SysLogServiceImpl extends BaseServiceImpl<SysLogMapper, SysLog> imp
     }
 
     @Override
-    public Paging<SysLogQueryVo> getSysLogPageList(SysLogQueryParam sysLogQueryParam) throws Exception {
+    public PageInfo<SysLogQueryVo> getSysLogPageList(SysLogQueryParam sysLogQueryParam) throws Exception {
         Page page = setPageParam(sysLogQueryParam, OrderItem.desc("create_time"));
         IPage<SysLogQueryVo> iPage = sysLogMapper.getSysLogPageList(page, sysLogQueryParam);
-        return new Paging(iPage);
+        return PageInfo.build(iPage);
     }
 
 }

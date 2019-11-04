@@ -1,10 +1,10 @@
 package io.geekidea.springbootplus.foobar.service;
 
+import io.geekidea.springbootplus.common.vo.PageInfo;
 import io.geekidea.springbootplus.foobar.entity.FooBar;
 import io.geekidea.springbootplus.common.service.BaseService;
 import io.geekidea.springbootplus.foobar.param.FooBarQueryParam;
 import io.geekidea.springbootplus.foobar.vo.FooBarQueryVo;
-import io.geekidea.springbootplus.common.vo.Paging;
 
 import java.io.Serializable;
 
@@ -61,6 +61,6 @@ public interface FooBarService extends BaseService<FooBar> {
      * @return
      * @throws Exception
      */
-    Paging<FooBarQueryVo> getFooBarPageList(FooBarQueryParam fooBarQueryParam) throws Exception;
+    PageInfo<FooBarQueryVo> getFooBarPageList(FooBarQueryParam fooBarQueryParam) throws Exception;
 
 }

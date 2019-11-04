@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="io.geekidea.springbootplus.foobar.mapper.MyTestMapper">
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, name, deleted, create_time, update_time
+    </sql>
+
+    <select id="getMyTestById" resultType="io.geekidea.springbootplus.foobar.vo.MyTestQueryVo">
+        select
+        <include refid="Base_Column_List"/>
+        from my_test where id = #{id}
+    </select>
+
+    <select id="getMyTestPageList" resultType="io.geekidea.springbootplus.foobar.vo.MyTestQueryVo">
+        select
+        <include refid="Base_Column_List"/>
+        from my_test
+    </select>
+
+</mapper>
